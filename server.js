@@ -5,20 +5,57 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne={
-    title:'Article one - manju',
-    heading:'article-one',
-    date:'oct 12 , 2016',
-    content:`<p>
-                    This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..
+var articles={
+    'article-One':{
+        title:'Article one - manju',
+        heading:'article-one',
+        date:'oct 12 , 2016',
+        content:`<p>
+                        This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..
+                    </p>
+                    <p>
+                        This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..
+                    </p>
+                    <p>
+                        This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..
+                    </p>`
+    },
+    'article-two':{
+        title:'Article two - manju',
+        heading:'article-two',
+        date:'oct 14 , 2016',
+        content:`<p>
+                    This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..
                 </p>
                 <p>
-                    This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..
+                
+                    This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..
                 </p>
                 <p>
-                    This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..
+                
+                    This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..This is the content of article two !!!..
                 </p>`
+    
+    },
+    'article-three':{
+        title:'Article three- manju',
+        heading:'article-three',
+        date:'oct 16 , 2016',
+        content:`<p>
+                this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...
+                </p>
+                
+                <p>
+                this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...
+                </p>
+                
+                <p>
+                this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...this is the content of article three!!!...
+                </p>`
+    
+    }
 };
+
 function createTemplate(data){
     var heading=data.heading;
     var date=data.date;
@@ -55,19 +92,15 @@ function createTemplate(data){
     return htmlTemplate;
 }
 
-
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-  res.send(createTemplate(articleOne));
-});
-app.get('/article-two',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-app.get('/article-three',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+app.get('/:articleName',function(req,res){
+    // :articleName==article-one
+    // articles[articlesName] == {} contents for article one
+    var articleName=reqs.params.articleName;
+  res.send(createTemplate(articles[articleName]));
 });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
