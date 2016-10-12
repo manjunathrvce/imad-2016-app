@@ -5,7 +5,7 @@ var element=document.getElementById('main-text');
 var marginLeft = 0;
 
 function moveRight(){
-  marginLeft=marginLeft+1;
+  marginLeft=marginLeft+4;
   image.style.marginLeft=marginLeft+'px';
 }
 
