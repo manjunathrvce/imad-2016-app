@@ -18,7 +18,7 @@ var articleOne={
                 <p>
                     This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..This is the content of article one !!!..
                 </p>`
-}
+};
 function createTemplate(data){
     var heading=data.heading;
     var date=data.date;
