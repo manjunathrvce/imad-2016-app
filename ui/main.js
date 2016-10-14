@@ -43,3 +43,23 @@ button.onclick = function(){
   request.open('GET','http://manjunathrvce.imad.hasura-app.io/counter',true);
   request.send(null);
 };
+
+
+
+
+//submit Name
+
+var inputName = document.getElementById('name');
+var input = inputName.value;
+var submit = document.getElementById('submit_btn');
+submit.onclick = function(){
+    //Make a Request to the server and Send the Name 
+    // Capture thelist of names and render it as a list
+    var names=['name 1','name 2','name 3','name 4'];
+    var list = '';
+    for(var i=0;i<names.length;i++){
+        list += '<li>'+names[i]+',</li>';
+    }
+    var ul = document.getElementById('namelist');
+    ul.innerHTML = list;
+};
