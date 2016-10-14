@@ -40,6 +40,6 @@ button.onclick = function(){
   };
   
   //Make the Request
-  request.open('GET','http://manjunathrvce.imad.hasura-app.io/counter');
+  request.open('GET','http://manjunathrvce.imad.hasura-app.io/counter',true);
   request.send(null);
 };
