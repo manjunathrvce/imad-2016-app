@@ -20,18 +20,26 @@ var image=document.getElementById('madi');
     
 // counter coding
 
-var counter = 0 ;
 button=document.getElementById('counter');
 button.onclick = function(){
     
-  //make a request to the counter endpoint
-  
+  //create a request object
+  var request = new XMLHttpRequest();
   
   //capture the response and store it in a varaiable
+  request.onreadystatechange = function(){
+      if(request.readystate===XMLHttpRequest.DONE){
+          //Take some action
+          if(request.status===200){
+              var counter = request.responseText;
+              var span = document.getElementById('count');
+              span.innerHTML = counter.toString();
+          }
+      }
+      //Not Done Yet
+  };
   
-  
-  //render the variable in the correct span
-  counter=counter+1;
-  var span = document.getElementById('count');
-  span.innerHTML = counter.toString();
+  //Make the Request
+  request.open('GET','manjunathrvce.imad.hasura-app.io/counter');
+  request.send(null);
 };
