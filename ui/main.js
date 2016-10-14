@@ -76,7 +76,7 @@ submit.onclick = function(){
   };
   
   //Make the Request
-  request.open('GET','http://manjunathrvce.imad.hasura-app.io/submit-name?name='+name,true);
+  request.open('GET','http://manjunathrvce.imad.hasura-app.io/submit-name?name='+input,true);
   request.send(null);
     // Capture thelist of names and render it as a list
 
