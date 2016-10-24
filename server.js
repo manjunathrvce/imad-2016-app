@@ -4,7 +4,7 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-
+var Pool = require('pg').Pool;
 var articles={
     'article-one':{
         title:'Article one - manju',
@@ -55,7 +55,13 @@ var articles={
     
     }
 };
-
+var config = {
+    user : 'manjunath-rvce',
+    database : 'manjunath-rvce',
+    host : 'db.imad.hasura-app.io',
+    port : '5432',
+    password : process.env.DB_PASSWORD
+};
 function createTemplate(data){
     var heading=data.heading;
     var date=data.date;
@@ -95,7 +101,18 @@ function createTemplate(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
+var pool = new Pool(config);
+app.get('/test-db',function(req,res){
+  //make a request
+  //return the response with the results 
+  pool.query('SELECT * FROM test',function(err,result){
+      if(err){
+          res.status(500).send(err.toString());
+      }else{
+          res.send(JSON.stringfy(result));
+      }
+  });
+});
 var counter=0;
 
 app.get('/counter',function(req,res){
