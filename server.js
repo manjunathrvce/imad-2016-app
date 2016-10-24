@@ -56,8 +56,8 @@ var articles={
     }
 };
 var config = {
-    user : 'manjunath-rvce',
-    database : 'manjunath-rvce',
+    user : 'manjunathrvce',
+    database : 'manjunathrvce',
     host : 'db.imad.hasura-app.io',
     port : '5432',
     password : process.env.DB_PASSWORD
