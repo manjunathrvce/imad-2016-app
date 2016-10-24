@@ -56,10 +56,10 @@ var articles={
     }
 };
 var config = {
-    user : 'manjunathrvce',
-    database : 'manjunathrvce',
-    host : 'db.imad.hasura-app.io',
-    port : '5432',
+    user: 'manjunathrvce',
+    database: 'manjunathrvce',
+    host: 'db.imad.hasura-app.io',
+    port: '5432',
     password : process.env.DB_PASSWORD
 };
 function createTemplate(data){
