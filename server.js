@@ -104,6 +104,7 @@ app.get('/', function (req, res) {
 var pool = new Pool(config);
 app.get('/test',function(req,res){
   //make a request
+  res.sendFile('hello world');
   //return the response with the results 
   pool.query('SELECT * FROM test',function(err,result){
       if(err){
